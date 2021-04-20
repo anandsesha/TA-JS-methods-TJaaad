@@ -4,8 +4,7 @@
   Create a function named addTwo which accepts a number, adds 2 to the number and return the new value.
 */
 function addTwo(num){
-  num += 2;
-  return num;
+  return num + 2;
 }
 /*
   Create a function named addThree which accepts a number, adds 3 to the number and return the new value.
@@ -111,9 +110,9 @@ let first = function (cb){
 */
 let second = function (){
   return function third(num){
-    num += 1;
-    return num;
+    return num + 1;
   };
+  return third;
 }
 let addsOne = second();
 console.log(addsOne(1)); // Output will be 2
@@ -125,11 +124,10 @@ console.log(addsOne(1)); // Output will be 2
   - also write the required code to call the function.
 */
 let callMe = function (cb){
-  let final = cb;
-  return final;
+  return final = cb;
 }
-let addsTwo = callMe(addsTwo);
-console.log(addsTwo(1)); // Output is 2
+let addsTwo = callMe(addTwo);
+console.log(addTwo(1)); // Output is 3
 
 // Data Starts (Don't change this)
 const people = [
@@ -439,8 +437,7 @@ let filter = function (arr, cb){
     console.log(multiplyByFive(5)); // 45
 */
 let multiplyBy = function(num){
-  return function multiply(num2){
+  return function (num2){
     return num * num2;
   }
-  return multiply;
 }
