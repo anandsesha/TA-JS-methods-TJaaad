@@ -260,10 +260,28 @@ Example:
 
 17. `forEach`
 
-
-
+- Parameter: accepts a callback function. And optional parameters like current value of the elemnt, index array and initial value.
+   - Return: undefined.
+   - Example:
+     ```js
+     let num = [5, 12, 8, 130, 44];
+     num.forEach(num => console.log(num)); // undefined 
+     ```
+   - `forEach` method basically gives access to each element of the array. 
+   - No it does not mutate the original array
 
 18. `map`
+
+- Parameter: a call back function which accepts a function reference. We can also provide optional parameters like index, array.
+   - Return: a new array which has the result of the function it executes.
+   - Example:
+     ```js
+     let num = [1, 4, 9, 16];
+      num.map((num) => num > 2); // [false, true, true, true]
+     ```
+   - `map` method executes the callback function and stores the result of that in a new array in the same index as input is taken.  
+   - No it does not mutate the original array.
+
 19. `pop`
 
 - Parameter: an element which can be a number string etc of any type.
@@ -281,5 +299,46 @@ Example:
    - Yes it mutates the original array.
 
 20. `reduce`
+
+- Parameter: an accumulator, current Value, the callback function and the initial value (optional).
+   - Return: A single value which is of type as per the initial value.
+   - Example:
+   ```js
+   let array = [1, 2, 3, 4, 5];
+   array.reduce((acc,num) => acc+num,0) //15
+
+   let arrayString = ["A","B","C"]
+   arrayString.reduce((acc,num) => acc+num,"") // "ABC"      
+   ```
+   - `reduce` is used to return a single value from a collection of values. 
+   - No it does not mutates the original array.
+
 21. `slice`
+
+- Parameter: an element which can be a number string etc of any type.
+   - Return: the removed element.
+   - Example:
+     ```js
+     let animals = ['pigs', 'goats', 'sheep'];
+      animals.push('') // (4) ["pigs", "goats", "sheep", ""]
+      animals.push("lion") // ["pigs", "goats", "sheep", "", "lion"]
+      animals.push(true) // ["pigs", "goats", "sheep", "", "lion",true]
+      animals.push(1) // ["pigs", "goats", "sheep", "", "lion", 1]    
+      animals.push({}) // ["pigs", "goats", "sheep", "", "lion", 1,{}]
+     ```
+   - `pop` method removes the last element of the array i.e at the last index at the end of the array. 
+   - Yes it mutates the original array.
+
+
 22. `some`
+
+- Parameter: accepts a calback function with one element in it and also accepts optional parameters the index and original array.
+   - Return: a boolean. If result is truthy value then returns true, else returns false.
+   - Example:
+   ```js
+   let array = [1, 2, 3, 4, 5];
+   array.some((num) => num > 3 ) // true
+   array.some((num) => num > 5 ) // false
+   ```
+   - `some` method returns true if the callback function it accepts returns true for atleast one condition mentioned. So some() will return true.
+   - No it does not mutate the original array.
