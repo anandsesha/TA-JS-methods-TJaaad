@@ -34,7 +34,7 @@ console.log(`The index of first is in quote is ${quote.indexOf("is")}`)
 */
 
 for(let i=0;i<6;i++){
-  console.log(`The character at index ${i} is '${quote.charAt(i)}'`)
+  console.log(`The character at index ${i} is '${quote[i]}'`)
 }
 
 /*
@@ -48,13 +48,18 @@ console.log(from.concat(` `,`said`,` `,quote,` `,`to`,` `,to))
 6. Does from, to and quote ends with "rk". Check all three.
 */
 
-if(from.endsWith("rk")){
-  console.log(`Variable from ends with "rk"`)
-}else if(quote.endsWith("rk")){
-  console.log(`Variable quote ends with "rk"`)
-}else if(to.endsWith("rk")){
-  console.log(`Variable 'to' ends with "rk"`)
-}
+// if(from.endsWith("rk")){
+//   console.log(`Variable from ends with "rk"`)
+// }else if(quote.endsWith("rk")){
+//   console.log(`Variable quote ends with "rk"`)
+// }else if(to.endsWith("rk")){
+//   console.log(`Variable 'to' ends with "rk"`)
+// }
+
+from.endsWith("rk")
+to.endsWith("rk")
+quote.endsWith("rk")
+
 
 /*
 7. Does quote includes the word "Only"
@@ -80,25 +85,28 @@ console.log(quoteSplitted)
 11. Change the word "today" in quoteSplitted to "tomorrow" and join all the words to form a sentance.
 */
 
-
+let indexOfToday = quoteSplitted.indexOf("today")
+quoteSplitted[indexOfToday] = "tomorrow"
+quoteSplitted.join(" ")
 
 /*
 12. Find the index of second "o" in quote. Use indexOf
 */
 
-console.log(quote.indexOf("o",11))
+console.log(quote.indexOf("o",7))
 
 /*
 13. Find the last index of letter "a" in quote.
 */
 
-console.log(quote.lastIndexOf("a"))
+let lastIndexOfA = quote.lastIndexOf("a")
+console.log(lastIndexOfA)
 
 /*
 14. Find the second last index of letter "a" in quote.
 */
 
-console.log(quote.indexOf("a",30))
+console.log(quote.lastIndexOf("a",lastIndexOfA - 1))
 
 /*
 15. Make the quote 70 character long. If it has less characters add rest as .......
@@ -106,15 +114,19 @@ Example: "Hello" (convert to 10 characters) => "Hello....."
 Store the output in a new variable
 */
 
-let longQuoteEnd = quote.padEnd(70,'.')
-console.log(longQuoteEnd)
+// let longQuoteEnd = quote.padEnd(70,'.')
+// console.log(longQuoteEnd)
+
+let newQuote = quote + ".".repeat(70 - quote.length)
 
 /*
 16. Do same as (15) but the ... should come in start. Store the output in a new variable
 */
 
-let longQuoteStart = quote.padStart(70,'.')
-console.log(longQuoteStart)
+// let longQuoteStart = quote.padStart(70,'.')
+// console.log(longQuoteStart)
+
+let newQuoteStart = ".".repeat(70 - quote.length) + quote
 
 /*
 17. Log the repeat of "Hello World!" 10 times.
@@ -136,15 +148,20 @@ console.log(to.replace("Stark","Lannister"))
 20. Make the quote of length 30 and put ... at the end. (use slice)
 */
 
-let quoteSliced = quote.slice(0,30)
-console.log(quoteSliced.padEnd(33,"."))
+// let quoteSliced = quote.slice(0,30)
+// console.log(quoteSliced.padEnd(33,"."))
 
+console.log(quote.slice(0,30) + "...")
 /*
 21. Find out does quote, from, to starts with "A"
 */
 
-if(quote.startsWith('A') || from.startsWith('A') || to.startsWith('A')){
-  console.log(true);
-}else{
-  console.log(false);
-}
+// if(quote.startsWith('A') || from.startsWith('A') || to.startsWith('A')){
+//   console.log(true);
+// }else{
+//   console.log(false);
+// }
+
+console.log(quote.startsWith('A'))
+console.log(from.startsWith('A'))
+console.log(to.startsWith('A'))
