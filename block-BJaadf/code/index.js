@@ -35,8 +35,14 @@ fruits.unshift("Dragon Fruit")
 
 // Log true or false based on the value at index 0 and 1 is 'Dragon Fruit' and 'Guava' or not
 
-console.log(fruits[0] === "Dragon Fruit")
-console.log(fruits[1] === "Guava")
+// console.log(fruits[0] === "Dragon Fruit")
+// console.log(fruits[1] === "Guava")
+
+if(fruits[0] === "Dragon Fruit" && fruits[1] === "Guava"){
+    console.log(true)
+}else{
+    console.log(false)
+}
 
 // Update the value of index 1 to `Pears`
 
@@ -44,7 +50,7 @@ fruits[1] = "Pears"
 
 // Add the 'Kiwi' and 'Lemon' to the index 1 and 2 and shift the other element to next index (use splice to add element)
 
-fruits.splice(1,2,"Kiwi","Lemon")
+fruits.splice(1,0,"Kiwi","Lemon")
 
 // Remove (slice) all the element from index 5
 
@@ -56,17 +62,18 @@ let moreFruits = ['Berries', 'Melons']
 
 // Concat moreFruits into fruits array (re-assign so the value gets updated)
 
-fruits.concat(moreFruits)
+fruits = fruits.concat(moreFruits)
 
 // Log the name of all fruit in console
 
-console.log(fruits)
+fruits.forEach((name) => console.log(name))
 
 // Convert each fruit name to lowercase and log it
 
-for(let i=0; i<fruits.length; i++){ 
-    console.log(fruits[i].toLowerCase());
-}
+// for(let i=0; i<fruits.length; i++){ 
+//     console.log(fruits[i].toLowerCase());
+// }
+fruits.forEach((name) => console.log(name.toLowerCase()))
 
 // Convert all fruits name into lowercase and store in new array named lowercaseFruits
 
@@ -127,6 +134,8 @@ newFlatArray.findIndex((num) => num === 10);
 // Reverse the values of numbersThree array
 
 newFlatArray.sort((a,b) => b-a);
+//OR
+newFlatArray.reverse();
 
 // Reverse the values of numbersTwo array
 
@@ -134,8 +143,10 @@ numbersTwoFlat.sort((a,b) => b-a);
 
 // Join all fruits with '-', convert to uppercase and log it
 
-console.log(fruits.map((element) => element.toUpperCase()).join("-"))
+// console.log(fruits.map((element) => element.toUpperCase()).join("-"))
+console.log(fruits.join('-').toUpperCase())
 
 // Join all fruits with '&', convert to lowercase and log it
 
-console.log(fruits.map((element) => element.toLowerCase()).join("&"))
+// console.log(fruits.map((element) => element.toLowerCase()).join("&"))
+console.log(fruits.join('&').toLowerCase())
