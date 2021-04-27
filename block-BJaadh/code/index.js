@@ -69,6 +69,9 @@ console.log(strings.pop())
 let largestNumUsingSort = [...numbers].sort((a,b) => b-a)
 console.log(largestNumUsingSort[0])
 
+// let largestNumUsingSortAgain = [...numbers].sort((a,b) => a-b).pop()
+// console.log(largestNumUsingSortAgain)
+
 // - Find longest string in strings
 
 let largestSrtUsingSort = [...strings].sort((a,b) => b.length-a.length)
@@ -110,6 +113,9 @@ let result = numbers.map((num) => {
 });
 console.log(result)
 
+// console.log([...numbers].splice(numbers.indexOf(12),1,1221))
+// console.log([...numbers].splice(numbers.indexOf(18),1,1881))
+
 // - Replace words in strings array with the length of the word
 
 let resultStrings = strings.map((word) => word.length);
@@ -117,8 +123,9 @@ console.log(resultStrings)
 
 // - Find the sum of the length of words using above question
 
-let sumOfLengthOfWords = resultStrings.reduce((acc,num) =>  {
-  return acc + num
+let sumOfLengthOfWords = resultStrings.reduce((acc,cv) =>  {
+  acc = acc + cv;
+  return acc;
 }, 0);
 
 console.log(sumOfLengthOfWords)
@@ -150,15 +157,16 @@ console.log(allFullName)
 
 // - Sort the array created above alphabetically
 
-console.log(allFullName.sort())
+console.log([...allFullName].sort())
 
 // - Create a new array that contains only user who has at least one vowel in the firstname.
 
 let atLeastOneVowel = customers.filter((name) => {
   if(name.firstname.includes('a') || name.firstname.includes('e') || name.firstname.includes('i') || name.firstname.includes('o') || name.firstname.includes('u')){
     return true;
+  }else{
+    return false;
   }
-  return false;
 })
 
 console.log(atLeastOneVowel)
