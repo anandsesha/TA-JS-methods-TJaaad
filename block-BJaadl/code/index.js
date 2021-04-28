@@ -11,8 +11,13 @@ let words = [
 
 // - Write a function findLongestWord that takes an array of words and returns the longest word from the array. (Use above array "words" to test it). If there are 2 with the same length, it should return the first occurrence.
 
-let findLongestWord = [...words].sort((a,b) => a.length - b.length).pop()
-console.log(findLongestWord)
+// let findLongestWord = [...words].sort((a,b) => a.length - b.length).pop()
+// console.log(findLongestWord)
+
+function findLongestWord(arr){
+  return [...words].sort((a,b) => a.length - b.length).pop()
+}
+console.log(findLongestWord(words))
 
 // - Convert the above array "words" into an array of length of word instead of word.
 
@@ -120,8 +125,8 @@ console.log(sumNum)
 
 let averageNumbers = numbers.reduce((acc,cv) => {
   acc += cv;
-  return acc/numbers.length;
-},0)
+  return acc; //87
+},0)/numbers.length; //87 / 10 (Avg)
 console.log(averageNumbers)
 
 
@@ -140,8 +145,13 @@ let strings = [
 
 // - Write a function averageWordLength that receives an array of words2 and calculate the average length of the words.
 
-let averageWordLength = lengthOfWord.reduce((acc,cv) => {
-  acc = acc + cv;
-  return acc/numbers.length;
-},0)
-console.log(averageWordLength)
+// let averageWordLength = lengthOfWord.reduce((acc,cv) => {
+//   acc = acc + cv;
+//   return acc;
+// },0) /numbers.length;
+
+function averageWordLength(arr){
+  return [...words].map((word) => word.length)
+  .reduce((acc,cv) => acc+cv,0) / words.length
+}
+console.log(averageWordLength(strings))
