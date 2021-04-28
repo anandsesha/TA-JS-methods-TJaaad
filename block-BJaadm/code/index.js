@@ -30,7 +30,7 @@ console.log(peopleSex)
 
 // Log the filtered named of people in peopleName that starts with 'J' or 'P'
 
-console.log(peopleName.filter((peopleName) => peopleName.startsWith('J') || peopleName.startsWith('P')))
+console.log(peopleName.filter((name) => name.startsWith('J') || name.startsWith('P')))
 
 // Log the length of filtered named of people in peopleName that starts with 'A' and 'C'
 
@@ -80,11 +80,11 @@ console.log(peopleGrade.filter((num) => num%2 === 0))
 
 // Find the first name that starts with 'J' in persons array and log the object
 
-console.log(peopleName.find((people) => people.startsWith('J')))
+console.log(persons.find((person) => person.name.startsWith('J')))
 
 // Find the first name that starts with 'P' in persons array and log the object
 
-console.log(peopleName.find((people) => people.startsWith('P')))
+console.log(persons.find((person) => person.name.startsWith('P')))
 
 // Find the first name that starts with 'J', grade is greater than 10 and is a female
 
@@ -120,25 +120,27 @@ console.log(gradeTotal/peopleGrade.length);
 
 // Find the average grade of male
 
-let avgGradeMale = persons.filter(((person) => person.sex == 'M'))
+let maleGrade = persons.filter(((person) => person.sex == 'M'))
 .map((person) => person.grade)
-.reduce((acc,cv) =>{
+
+let avgGradeMale = maleGrade.reduce((acc,cv) =>{
   acc = acc + cv;
   return acc;
 },0)
 
-console.log(avgGradeMale)
+console.log(`Male Grade Average is ${avgGradeMale/maleGrade.length}`)
 
 // Find the average grade of female
 
-let avgGradeFemale = persons.filter(((person) => person.sex == 'F'))
+let femaleGrade = persons.filter(((person) => person.sex == 'F'))
 .map((person) => person.grade)
-.reduce((acc,cv) =>{
+
+let avgGradeFemale = femaleGrade.reduce((acc,cv) =>{
   acc = acc + cv;
   return acc;
 },0)
 
-console.log(avgGradeFemale)
+console.log(avgGradeFemale/femaleGrade.length)
 
 // Find the highest grade
 
