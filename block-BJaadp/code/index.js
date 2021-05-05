@@ -17,17 +17,44 @@ let persons = [
 
 // Find the average grade
 
+let personGradesArray = persons.map((person) => person.grade)
+let personGradesTotal = personGradesArray.reduce((acc,cv) => {return acc + cv},0) 
+let averageGrade = personGradesTotal / personGradesArray.length;
+console.log(averageGrade)
+
 // Find the average grade of male
+
+let males = persons.filter((person) => person.sex == 'M')
+let maleGrades = males.map((person) => person.grade)
+let maleGradesTotal = maleGrades.reduce((acc,cv) => acc+cv,0)
+let averageMaleGrade = maleGradesTotal / maleGrades.length;
+console.log(averageMaleGrade)
 
 // Find the average grade of female
 
+let females = persons.filter((person) => person.sex == 'F')
+let femaleGrades = females.map((person) => person.grade)
+let femaleGradesTotal = femaleGrades.reduce((acc,cv) => acc+cv,0)
+console.log(femaleGradesTotal / femaleGrades.length)
+
 // Find the highest grade
+
+let highestGrade = [...personGradesArray].sort((a,b) => a-b).pop()
 
 // Find the highest grade in male
 
+let highestmaleGrade = [...maleGrades].sort((a,b) => a-b).pop()
+
 // Find the highest grade in female
 
+let highestFemaleGrade = [...femaleGrades].sort((a,b) => a-b).pop()
+
 // Find the highest grade for people whose name starts with 'J' or 'P'
+
+let nameStartJP = persons.filter((person) => person.name.startsWith('J') || person.name.startsWith('P'))
+let personGradesArrayJOrP =  nameStartJP.map((person) => person.grade)
+let highestGradeJOrP =  [...personGradesArrayJOrP].sort((a,b) => a-b).pop()
+console.log(highestGradeJOrP)
 
 const fruitBasket = [
   'banana',
@@ -52,6 +79,26 @@ Output:
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 */
 
+let fruitsObj = {banana: 0, cherry: 0, orange: 0, apple: 0, fig: 0}
+fruitBasket.forEach((fruit) => {
+  if(fruit == 'banana'){
+    fruitsObj.banana = fruitsObj.banana + 1;
+  }else if(fruit == 'cherry'){
+    fruitsObj.cherry = fruitsObj.cherry + 1;
+  }
+  else if(fruit == 'orange'){
+    fruitsObj.orange = fruitsObj.orange + 1;
+  }
+  else if(fruit == 'apple'){
+    fruitsObj.apple = fruitsObj.apple + 1;
+  }
+  else if(fruit == 'fig'){
+    fruitsObj.fig = fruitsObj.fig + 1;
+  }
+})
+
+console.log(fruitsObj)
+
 /* 
 
 Use the fruitBasket array to create an array of array. Each array will contain two values name of fruit and number of times
@@ -62,6 +109,26 @@ Output:
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
 
+let fruitsObj = [['banana', 0], ['cherry', 0], ['orange', 0], ['apple', 0], ['fig', 0]]
+fruitBasket.forEach((fruit) => {
+  if(fruit == 'banana'){
+    fruitsObj[0][1] += 1;
+  }else if(fruit == 'cherry'){
+    fruitsObj[1][1] += 1;
+  }
+  else if(fruit == 'orange'){
+    fruitsObj[2][1] += 1;
+  }
+  else if(fruit == 'apple'){
+    fruitsObj[3][1] += 1;
+  }
+  else if(fruit == 'fig'){
+    fruitsObj[4][1] += 1;
+  }
+})
+console.log(fruitsObj)
+
+
 const data = [
   [1, 2, 3],
   [4, 5, 6],
@@ -70,6 +137,12 @@ const data = [
 ];
 
 // Using reduce flat data array
+
+let sample = data.reduce((acc, cv) => {
+  return acc.concat(cv);
+},[])
+console.log(sample)
+
 
 const dataTwo = [
   [1, 2, 3],
@@ -80,6 +153,12 @@ const dataTwo = [
 
 // Using reduce flat dataTwo array
 
+let dataTwoFlat = dataTwo.reduce((acc,cv) => {
+  return acc.concat(cv);
+  },[])
+
+console.log(dataTwoFlat.flat())
+
 /*
 
 Create these functions which accepts a number value and returns a number value:
@@ -89,6 +168,27 @@ Create these functions which accepts a number value and returns a number value:
   - `triple` triples the input 
   - `half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 */
+
+function increment(num){
+  return num = num + 1;
+}
+
+function double(num){
+  return num = num * 2;
+}
+
+function decrement(num){
+  return num = num - 1;
+}
+
+function triple(num){
+  return num = num * 3;
+}
+
+function half(num){
+  num = num / 2;
+  return Math.round(num);
+}
 
 let pipeline = [
   increment,
