@@ -22,6 +22,9 @@ let personGradesTotal = personGradesArray.reduce((acc,cv) => {return acc + cv},0
 let averageGrade = personGradesTotal / personGradesArray.length;
 console.log(averageGrade)
 
+// let totalGrade = persons.reduce((acc,cv) => acc+cv.grade,0)
+// console.log(totalGrade/persons.length)
+
 // Find the average grade of male
 
 let males = persons.filter((person) => person.sex == 'M')
@@ -29,6 +32,11 @@ let maleGrades = males.map((person) => person.grade)
 let maleGradesTotal = maleGrades.reduce((acc,cv) => acc+cv,0)
 let averageMaleGrade = maleGradesTotal / maleGrades.length;
 console.log(averageMaleGrade)
+
+// let malesAvgGrade = persons.filter((person) => person.sex == 'M')
+// .reduce((acc,cv) =>{
+//   return acc + cv.grade
+// },0)/persons.length;
 
 // Find the average grade of female
 
@@ -79,25 +87,36 @@ Output:
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 */
 
-let fruitsObj = {banana: 0, cherry: 0, orange: 0, apple: 0, fig: 0}
-fruitBasket.forEach((fruit) => {
-  if(fruit == 'banana'){
-    fruitsObj.banana = fruitsObj.banana + 1;
-  }else if(fruit == 'cherry'){
-    fruitsObj.cherry = fruitsObj.cherry + 1;
-  }
-  else if(fruit == 'orange'){
-    fruitsObj.orange = fruitsObj.orange + 1;
-  }
-  else if(fruit == 'apple'){
-    fruitsObj.apple = fruitsObj.apple + 1;
-  }
-  else if(fruit == 'fig'){
-    fruitsObj.fig = fruitsObj.fig + 1;
-  }
-})
+// let fruitsObj = {banana: 0, cherry: 0, orange: 0, apple: 0, fig: 0}
+// fruitBasket.forEach((fruit) => {
+//   if(fruit == 'banana'){
+//     fruitsObj.banana = fruitsObj.banana + 1;
+//   }else if(fruit == 'cherry'){
+//     fruitsObj.cherry = fruitsObj.cherry + 1;
+//   }
+//   else if(fruit == 'orange'){
+//     fruitsObj.orange = fruitsObj.orange + 1;
+//   }
+//   else if(fruit == 'apple'){
+//     fruitsObj.apple = fruitsObj.apple + 1;
+//   }
+//   else if(fruit == 'fig'){
+//     fruitsObj.fig = fruitsObj.fig + 1;
+//   }
+// })
 
-console.log(fruitsObj)
+// console.log(fruitsObj)
+
+let fruitsObj = fruitBasket.reduce((acc,cv) =>{
+  if(acc[cv]){
+    acc[cv] = acc[cv] + 1;
+  }else{
+    acc[cv] = 1;
+  }
+  return acc;
+},{})
+
+console.log(fruitsObj);
 
 /* 
 
@@ -109,24 +128,31 @@ Output:
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
 
-let fruitsObj = [['banana', 0], ['cherry', 0], ['orange', 0], ['apple', 0], ['fig', 0]]
-fruitBasket.forEach((fruit) => {
-  if(fruit == 'banana'){
-    fruitsObj[0][1] += 1;
-  }else if(fruit == 'cherry'){
-    fruitsObj[1][1] += 1;
-  }
-  else if(fruit == 'orange'){
-    fruitsObj[2][1] += 1;
-  }
-  else if(fruit == 'apple'){
-    fruitsObj[3][1] += 1;
-  }
-  else if(fruit == 'fig'){
-    fruitsObj[4][1] += 1;
-  }
-})
-console.log(fruitsObj)
+// let fruitsObj = [['banana', 0], ['cherry', 0], ['orange', 0], ['apple', 0], ['fig', 0]]
+// fruitBasket.forEach((fruit) => {
+//   if(fruit == 'banana'){
+//     fruitsObj[0][1] += 1;
+//   }else if(fruit == 'cherry'){
+//     fruitsObj[1][1] += 1;
+//   }
+//   else if(fruit == 'orange'){
+//     fruitsObj[2][1] += 1;
+//   }
+//   else if(fruit == 'apple'){
+//     fruitsObj[3][1] += 1;
+//   }
+//   else if(fruit == 'fig'){
+//     fruitsObj[4][1] += 1;
+//   }
+// })
+// console.log(fruitsObj)
+
+let fruitsArray = Object.keys(fruitsObj).reduce((acc,cv) =>{
+  acc = acc.concat([[ cv,fruitsObj[cv] ]])
+  return acc;
+},[])
+console.log(fruitsArray)
+
 
 
 const data = [
@@ -154,10 +180,10 @@ const dataTwo = [
 // Using reduce flat dataTwo array
 
 let dataTwoFlat = dataTwo.reduce((acc,cv) => {
-  return acc.concat(cv);
+  return acc.concat(cv.flat(Infinity));
   },[])
 
-console.log(dataTwoFlat.flat())
+console.log(dataTwoFlat)
 
 /*
 
@@ -170,24 +196,23 @@ Create these functions which accepts a number value and returns a number value:
 */
 
 function increment(num){
-  return num = num + 1;
+  return num + 1;
 }
 
 function double(num){
-  return num = num * 2;
+  return num * 2;
 }
 
 function decrement(num){
-  return num = num - 1;
+  return num - 1;
 }
 
 function triple(num){
-  return num = num * 3;
+  return num * 3;
 }
 
 function half(num){
-  num = num / 2;
-  return Math.round(num);
+  return Math.round(num/2);
 }
 
 let pipeline = [
@@ -215,6 +240,12 @@ EXAMPLE:
   ...
 */
 
+pipeline.reduce((acc,cv) => {
+  acc = cv(acc); // cv -> increment acc -> 3 So, increment(3) --> returns 4
+  return acc;
+},3)
+
+
 let pipeline2 = [
   increment,
   half,
@@ -230,3 +261,8 @@ let pipeline2 = [
 ];
 
 // Find the output using pipeline2 the initial value if 8
+
+pipeline2.reduce((acc,cv) => {
+  acc = cv(acc);
+  return acc;
+},8)
