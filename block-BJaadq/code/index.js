@@ -1,35 +1,114 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
-function countAllPeople() {
-  // your code goes here
+// function countAllPeople() {
+//   let totalPeople = 0;
+//   for(let i=0; i<got.houses.length; i++){
+//     totalPeople += got.houses[i].people.length
+//   }
+//   return totalPeople;
+// }
+
+function countAllPeople(){
+  let totalPeople = 0;
+  got.houses.forEach((house) => {
+    totalPeople = totalPeople + house.people.length
+  })
+  return totalPeople;
 }
 
 function peopleByHouses() {
-  // your code goes here
+
+  got.houses.forEach((house) => {
+    let totalPeopleByHouse = 0;
+    totalPeopleByHouse +=  house.people.length
+    console.log(`No. of people in house ${house.name} is ${totalPeopleByHouse}`)
+  })
 }
 
+// function peopleByHouses() {
+//   let final = {};
+//   got.houses.forEach((house) => {
+//     console.log(house.name)
+//     final[house.name] = house.people.length;
+//   });
+//   return final;
+// }
+
+
 function everyone() {
-  // your code goes here
+  let namesArr = []
+  got.houses.forEach((house) => {
+      house.people.map((person) => {
+      namesArr.push(person.name)
+    })  
+  })
+  return namesArr;
 }
 
 function nameWithS() {
-  // your code goes here
+  let namesArr = []
+  got.houses.forEach((house) => {
+      house.people.map((person) => {
+        if(person.name.includes('s') || person.name.includes('S'))
+        {
+          namesArr.push(person.name)
+        }
+      })  
+  })
+  return namesArr;
 }
 
 function nameWithA() {
-  // your code goes here
+  let namesArr = []
+  got.houses.forEach((house) => {
+      house.people.map((person) => {
+        if(person.name.includes('a') || person.name.includes('A'))
+        {
+          namesArr.push(person.name)
+        }
+      })  
+  })
+  return namesArr;
 }
 
 function surnameWithS() {
-  // your code goes here
+  let surnameArr = []
+  // got.houses.forEach((house) => {
+  //   house.people.map((person) => {
+  //     if(person.name.split(' ')[1].startsWith('S')){
+  //       surnameArr.push(person.name)
+  //     }
+  //   })
+  // })
+  
+  everyone().map((person) => {
+    if(person.split(' ')[1].startsWith('S')){
+      surnameArr.push(person)
+    }
+  })
+  return surnameArr;
 }
 
 function surnameWithA() {
-  // your code goes here
+  let surnameWithA = []
+  everyone().map((person) => {
+    if(person.split(' ')[1].startsWith('A')){
+      surnameWithA.push(person)
+    }
+  })
+  return surnameWithA;
 }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  let final = {}
+
+  everyone().map((person) => {
+    console.log(person)
+    final[person.split(' ')[1]] = final[got.houses.forEach((house) => {
+      house.people.forEach((person) => person.name)
+    })]
+  })
+  return final;
 }
 
 // Testing your result after writing your function
