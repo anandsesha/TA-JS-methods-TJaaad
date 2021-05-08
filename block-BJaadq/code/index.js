@@ -17,23 +17,14 @@ function countAllPeople(){
 }
 
 function peopleByHouses() {
+  let final = {}
 
   got.houses.forEach((house) => {
-    let totalPeopleByHouse = 0;
-    totalPeopleByHouse +=  house.people.length
-    console.log(`No. of people in house ${house.name} is ${totalPeopleByHouse}`)
+    final[house.name] = house.people.length;
   })
+
+  return final;
 }
-
-// function peopleByHouses() {
-//   let final = {};
-//   got.houses.forEach((house) => {
-//     console.log(house.name)
-//     final[house.name] = house.people.length;
-//   });
-//   return final;
-// }
-
 
 function everyone() {
   let namesArr = []
@@ -49,7 +40,7 @@ function nameWithS() {
   let namesArr = []
   got.houses.forEach((house) => {
       house.people.map((person) => {
-        if(person.name.includes('s') || person.name.includes('S'))
+        if(person.name.toLowerCase().includes('s'))
         {
           namesArr.push(person.name)
         }
@@ -62,7 +53,7 @@ function nameWithA() {
   let namesArr = []
   got.houses.forEach((house) => {
       house.people.map((person) => {
-        if(person.name.includes('a') || person.name.includes('A'))
+        if(person.name.toLowerCase().includes('a'))
         {
           namesArr.push(person.name)
         }
@@ -81,8 +72,8 @@ function surnameWithS() {
   //   })
   // })
   
-  everyone().map((person) => {
-    if(person.split(' ')[1].startsWith('S')){
+  everyone().filter((person) => {
+    if(person.split(' ')[1].toLowerCase().startsWith('s')){
       surnameArr.push(person)
     }
   })
@@ -102,12 +93,10 @@ function surnameWithA() {
 function peopleNameOfAllHouses() {
   let final = {}
 
-  everyone().map((person) => {
-    console.log(person)
-    final[person.split(' ')[1]] = final[got.houses.forEach((house) => {
-      house.people.forEach((person) => person.name)
-    })]
+  got.houses.forEach((house) => {
+    final[house.name] = house.people.map((person) => person.name)
   })
+  
   return final;
 }
 
