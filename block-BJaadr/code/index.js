@@ -35,13 +35,17 @@ function nameWithS() {
 
 function nameWithA() {
   let allPeopleInGot =  everyone()
-  return allPeopleInGot.reduce((acc,cv) => {
+  // return allPeopleInGot.reduce((acc,cv) => {
 
-    if(cv.toLowerCase().includes('a')){
-      acc = acc.concat(cv)
-    }
-    return acc;    
-  },[])
+  //   if(cv.toLowerCase().includes('a')){
+  //     acc = acc.concat(cv)
+  //   }
+  //   return acc;    
+  // },[])
+
+  return allPeopleInGot.filter((person) => 
+    person.toLowerCase().includes('a')
+  )
 }
 
 function surnameWithS() {
@@ -54,12 +58,23 @@ function surnameWithS() {
 }
 
 function surnameWithA() {
-  return everyone().reduce((acc,cv) => {
-    if(cv.split(' ')[1].toLowerCase().startsWith('a')){
-      acc.push(cv)
-    }
-    return acc;
-  },[])
+  // return everyone().reduce((acc,cv) => {
+  //   if(cv.split(' ')[1].toLowerCase().startsWith('a')){
+  //     acc.push(cv)
+  //   }
+  //   return acc;
+  // },[])
+
+  return got.houses.reduce((acc,cv) => {
+    let surnameIncludesA = cv.people
+      .map((person) => person.name)
+      .filter((name) => 
+      name.split(' ')[1].toLowerCase().includes('a'))
+      
+      acc = acc.concat(surnameIncludesA)
+      return acc;
+    },[])
+
 }
 
 function peopleNameOfAllHouses() {
